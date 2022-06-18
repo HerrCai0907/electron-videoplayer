@@ -1,0 +1,54 @@
+{
+  "name": "electron-react-typescript-webpack-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "prepare": "husky install",
+    "version": "conventional-changelog -i CHANGELOG.md -s -n conventional-changelog.config.js && git add CHANGELOG.md",
+    "build": "webpack",
+    "release": "webpack --mode production",
+    "watch": "webpack --watch",
+    "pack": "npm run release && electron-builder --config electron-builder.yml",
+    "start": "electron --trace-warnings ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:cai_congcongcong/electron-react-typescript-webpack-start.git"
+  },
+  "config": {
+    "electron_builder_binaries_mirror": "https://npm.taobao.org/mirrors/electron-builder-binaries/"
+  },
+  "build": {
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    }
+  },
+  "author": "Congcong Cai <congcongcai0907@163.com>",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
+    "antd": "^4.19.5",
+    "conventional-changelog-cli": "^2.2.2",
+    "css-loader": "^6.7.1",
+    "electron": "^18.0.2",
+    "electron-builder": "^22.14.13",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "pretty-quick": "^3.1.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "style-loader": "^3.3.1",
+    "ts-jest": "^27.1.4",
+    "ts-loader": "^9.2.8",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3",
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
