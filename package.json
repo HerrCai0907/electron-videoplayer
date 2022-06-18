@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-typescript-webpack-start",
+  "name": "video-player",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple video player powered by electron",
   "main": "./dist/main/main.js",
   "scripts": {
     "prepare": "husky install",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:cai_congcongcong/electron-react-typescript-webpack-start.git"
+    "url": "https://github.com/HerrCai0907/electron-videoplayer.git"
   },
   "config": {
     "electron_builder_binaries_mirror": "https://npm.taobao.org/mirrors/electron-builder-binaries/"

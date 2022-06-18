@@ -1,7 +1,7 @@
 directories:
   output: dist
   buildResources: build
-appId: com.electron.electron-wordcloud
+appId: com.github.videoplayer
 compression: store
 asar: true
 files:
@@ -9,6 +9,6 @@ files:
       - ./dist/main/**/*
       - ./dist/web/**/*
 mac:
-  category: your.app.category.type
+  category: com.github.videoplayer
 linux:
-  category: your.app.category.type
+  category: com.github.videoplayer
