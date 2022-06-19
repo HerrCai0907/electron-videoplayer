@@ -9,7 +9,8 @@
     "build": "webpack",
     "release": "webpack --mode production",
     "watch": "webpack --watch",
-    "pack": "npm run release && electron-builder --config electron-builder.yml",
+    "pack:mac": "PYTHON_PATH=`which python2.7` electron-builder --config electron-builder.yml",
+    "pack:other": "electron-builder --config electron-builder.yml",
     "start": "electron ."
   },
   "repository": {
