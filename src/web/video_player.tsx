@@ -1,31 +1,25 @@
-import React, { useEffect, useState } from "react";
-import Player, { useMessageContextRef, ACTIONS, EVENTS } from "griffith";
-import { Card, Col, Divider, Row } from "antd";
+import React from "react";
+import Player, { useMessageContextRef, ACTIONS, EVENTS, PlaySourceMap } from "griffith";
+import { Card, Col, Row } from "antd";
 import { Tags } from "./tags";
 
-const sources = {
-  hd: {
-    format: "mp4",
-    play_url: "file:///home/ccc/Downloads/sample-mp4-file-small.mp4",
-  },
-};
 let currentTime: number = 0;
 
-const VideoPlayer = (props: {}) => {
+const VideoPlayer = (props: { source: string }) => {
   const messageContextRef = useMessageContextRef();
   messageContextRef.useEvent(EVENTS.TIMEUPDATE, (data) => {
     currentTime = data.currentTime;
   });
-  const createOnClickGoto = (timestep: number) => {
-    return () => {
-      messageContextRef.dispatchAction(ACTIONS.TIME_UPDATE, { currentTime: timestep });
-    };
+  const sources: PlaySourceMap = {
+    hd: {
+      play_url: props.source,
+    },
   };
   return (
     <div className="site-card-wrapper">
       <Row gutter={24} align="top">
         <Col span={20}>
-          <Card title="video" bordered={true}>
+          <Card bordered={false}>
             <Player
               id="video player"
               sources={sources}
@@ -37,7 +31,12 @@ const VideoPlayer = (props: {}) => {
         </Col>
         <Col span={4}>
           <Card title="timeline" bordered={true}>
-            <Tags<number> onClickAddTag={() => currentTime} createOnClickTag={createOnClickGoto}></Tags>
+            <Tags<number>
+              onClickAddTag={() => currentTime}
+              createOnClickTag={(timestep) => {
+                return () => messageContextRef.dispatchAction(ACTIONS.TIME_UPDATE, { currentTime: timestep });
+              }}
+            ></Tags>
           </Card>
         </Col>
       </Row>
