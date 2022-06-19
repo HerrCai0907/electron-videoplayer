@@ -3,7 +3,7 @@ import Player, { useMessageContextRef, ACTIONS, EVENTS, PlaySourceMap } from "gr
 import { Card, Col, Row } from "antd";
 import { Tags } from "./tags";
 
-let currentTime: number = 0;
+let currentTime = 0;
 
 const VideoPlayer = (props: { source: string }) => {
   const messageContextRef = useMessageContextRef();
@@ -18,7 +18,7 @@ const VideoPlayer = (props: { source: string }) => {
   return (
     <div className="site-card-wrapper">
       <Row gutter={24} align="top">
-        <Col span={20}>
+        <Col span={18}>
           <Card bordered={false}>
             <Player
               id="video player"
@@ -29,12 +29,14 @@ const VideoPlayer = (props: { source: string }) => {
             ></Player>
           </Card>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <Card title="timeline" bordered={true}>
-            <Tags<number>
-              onClickAddTag={() => currentTime}
-              createOnClickTag={(timestep) => {
-                return () => messageContextRef.dispatchAction(ACTIONS.TIME_UPDATE, { currentTime: timestep });
+            <Tags
+              onClickAddTag={() => {
+                return currentTime;
+              }}
+              createOnClickTag={(tag) => {
+                return () => messageContextRef.dispatchAction(ACTIONS.TIME_UPDATE, { currentTime: tag });
               }}
             ></Tags>
           </Card>
